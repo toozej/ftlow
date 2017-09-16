@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+	<h2> Drank </h2>
+    <form action="{{ url_for('add_entry_drank') }}" method=post class=add-entry>
+      <dl>
+        <dt>Winery:
+					<dd><input type=text size=30 name=winery>
+				<dt>Location:
+					<dd><input type=text size=30 name=location>
+				<dt>Vintage:
+					<dd><input type=text size=4 name=vintage>
+				<dt>Style:
+					<dd><input type=text size=30 name=style>
+				<dt>Vineyard:
+					<dd><input type=text size=30 name=vineyard>
+				<dt>Rating (0-5):
+					<dd><input type=text size=1 name=rating>
+		    <dt>Thoughts:
+			    <dd><textarea name=thoughts rows=5 cols=40></textarea>
+		    <dt>Flavours:
+			    <dd><textarea name=flavours rows=5 cols=40></textarea>
+			    <dd><input type=submit value=Add>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=entries>
+  {% for entry in entries %}
+  <li><h2>{{ entry.winery }}</h2>
+  <h3>{{ entry.vineyard }}</h3>
+  <p>Vintage: {{ entry.vintage }}</p>
+  <p>Winery Location: {{ entry.location }}</p>
+  <p>Style: {{ entry.style }}</p>
+  <p>Rating (0-5): {{ entry.rating }}</p>
+  <p>Thoughts: {{ entry.thoughts|safe }}</p>
+  <p>Flavours: {{ entry.flavours|safe }}</p>
+  <a href="{{ url_for('move_entry_drank', entry_id = entry.id) }}">Move</a>
+  <a href="{{ url_for('remove_entry_drank', entry_id = entry.id) }}">Remove</a>
+  {% else %}
+    <li><em>There are no entries here, you should probably crack open a bottle or few...</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

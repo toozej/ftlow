@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2> Wine, for organized people. Welcome </h2>
+<p>	FTLOW is a web application for helping you remember the wines you have enjoyed (or hated),
+and the wines you want to try out in the future. 
+</p>
+
+
+
+<p> Don't let your red wine buzz get in the way of keeping track of your thoughts. Check out the <a href="{{ url_for('show_entries_drank') }}">current entries</a>, or <a href="{{ url_for('register') }}">create an account</a> and take a look around!
+</p>
+
+{% endblock %}

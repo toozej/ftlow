@@ -1,0 +1,31 @@
+{% extends "layout_nohead.html" %}
+{% block body %}
+	{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+	<div id="container">
+		<div id="left">
+			<h2>Login</h2>
+			<form action="{{ url_for('login') }}" method=post>
+				<dl>
+					<dt>Username:
+					<dd><input type=text name=username>
+					<dt>Password:
+					<dd><input type=password name=password>
+					<dd><input type=submit value=Login>
+				</dl>
+			</form>
+		</div>
+  		<div id="right">
+			<h2>Register</h2>
+			<form action="{{ url_for('register') }}" method=post>
+				<dl>
+					<dt>Username:
+					<dd><input type=text name=username>
+					<dt>Password:
+					<dd><input type=password name=password>
+					<dd><input type=submit value=Register>
+				</dl>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+{% endblock %}

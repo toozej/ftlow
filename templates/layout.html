@@ -1,0 +1,20 @@
+<!doctype html>
+<title>FTLOW</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<div class=page>
+  <h1>For the Love of Wine</h1>
+  <div class=metanav>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+	<a href="{{ url_for('show_entries_drink') }}">drink</a>
+    <a href="{{ url_for('show_entries_drank') }}">drank</a>
+    <a href="{{ url_for('logout') }}">drunk</a>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
