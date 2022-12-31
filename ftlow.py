@@ -13,7 +13,7 @@ from __future__ import with_statement
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack, Response
-from flaskext.bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 import os, sys
 import StringIO
 import flickr
@@ -318,7 +318,7 @@ def page_server_error(e):
 if __name__ == '__main__':
     try:
         with open('ftlow.db'):
-            app.run(host='192.168.1.187')
+            app.run(host='0.0.0.0')
     except IOError as e:
         init_db()
-        app.run(host='192.168.1.187')
+        app.run(host='0.0.0.0')
